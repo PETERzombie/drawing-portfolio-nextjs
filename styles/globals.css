@@ -63,7 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
@@ -76,10 +76,10 @@ body {
   font-weight: bold;
   color: #333;
   margin: 0;
-  padding: 0;
+  padding-top: 2%;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
 }
 
 .landing-page.loaded h1 {
