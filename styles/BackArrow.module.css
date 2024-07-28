@@ -1,0 +1,15 @@
+.backArrow {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  font-size: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.backArrow a {
+  text-decoration: none;
+  color: #333;
+}

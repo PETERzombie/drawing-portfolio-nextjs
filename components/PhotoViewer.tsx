@@ -1,24 +1,67 @@
-import React from 'react';
+import { useState } from 'react';
+import Image from 'next/image';
 
-type Photo = {
+interface PhotoViewerProps {
   url: string;
   caption: string;
-};
+}
 
-type PhotoViewerProps = {
-  photos: Photo[];
-};
+const PhotoViewer = ({ url, caption }: PhotoViewerProps) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const PhotoViewer: React.FC<PhotoViewerProps> = ({ photos }) => {
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
   return (
-    <div className="photo-viewer">
-      {photos.map((photo, index) => (
-        <div key={index} className="flex flex-col items-center mb-4">
-          <img src={photo.url} alt={`Photo ${index + 1}`} className="max-w-full rounded-lg" />
-          <p className="mt-2 text-sm text-gray-600">{photo.caption}</p>
+    <>
+      <div className="photo-thumbnail" onClick={openModal}>
+        <Image src={url} alt={caption} layout="responsive" width={300} height={300} objectFit="cover" />
+      </div>
+
+      {isOpen && (
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <Image src={url} alt={caption} layout="fill" objectFit="contain" />
+            <p>{caption}</p>
+          </div>
         </div>
-      ))}
-    </div>
+      )}
+
+      <style jsx>{`
+        .photo-thumbnail {
+          cursor: pointer;
+        }
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+        }
+        .modal-content {
+          position: relative;
+          width: 80%;
+          height: 80%;
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+        }
+        .modal-content img {
+          max-width: 100%;
+          max-height: 80vh;
+          margin-bottom: 20px;
+        }
+        .modal-content p {
+          text-align: center;
+          color: #fff;
+        }
+      `}</style>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Remove external font links since we are now self-hosting */}
+        <link rel="preload" href="/fonts/ReduxRegular-3jLp.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
       </Head>
       <body>
         <Main />

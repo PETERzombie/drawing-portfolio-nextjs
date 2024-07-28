@@ -1,13 +1,23 @@
-// pages/about.tsx
-import React from 'react';
+import BackArrow from '../components/BackArrow';
+import HamburgerMenu from '../components/HamburgerMenu';
 
-const About: React.FC = () => {
+const AboutPage = () => {
   return (
-    <div className="flex flex-col items-center p-4">
-      <h1 className="text-2xl font-bold mb-4">About</h1>
-      <p>This is the about page.</p>
-    </div>
+    <>
+      <BackArrow />
+      <HamburgerMenu />
+      <div className="about-page">
+        <h1>About</h1>
+        {/* Add your about content here */}
+      </div>
+      <style jsx>{`
+        .about-page {
+          padding: 20px;
+          text-align: center;
+        }
+      `}</style>
+    </>
   );
 };
 
-export default About;
+export default AboutPage;
